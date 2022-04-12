@@ -3,7 +3,9 @@
 The repository contains the code to generate the dataset from our paper:
 
 > **A Deep Perceptual Measure for Lens and Camera Calibration**
+> 
 > Yannick Hold-Geoffroy¹ , Dominique Piché-Meunier³ , Kalyan Sunkavalli¹ , Jean-Charles Bazin², François Rameau², and Jean-François Lalonde³
+> 
 > Adobe¹ , KAIST² , Université Laval²
 
 ## Usage
