@@ -14,7 +14,7 @@ To generate crops with randomly sampled camera parameters, run:
 python main.py --pano_dir=<PANOS_ROOT> --output_dir=<OUTPUT_DIR>
 ```
 
-In our paper, we use the purchasable panorama dataset [360Cities](https://www.360cities.net/) to generate crops with random camera parameters. If you have access to the panoramas, you can generate our dataset by running
+In our paper, we use the purchasable panorama dataset [360Cities](https://www.360cities.net/) to generate crops. If you have access to the panoramas, you can generate our dataset by running
 
 ```
 python main.py --pano_dir=<360CITIES_ROOT> --output_dir=<OUTPUT_DIR> --metadata_dir=360cities_metadata
@@ -45,10 +45,10 @@ Random camera parameters are sampled with the following distributions:
 
 | Parameter                     | Distribution | Values                                                       |
 | ----------------------------- | ------------ | ------------------------------------------------------------ |
-| Focal lenght (mm)             | Lognormal    | $\mu=14, \sigma=16$                                          |
-| Pitch, midpoint (image units) | Normal       | $\mu=0.523, \sigma=0.3$                                      |
-| Roll (°)                      | Cauchy       | $x_0=0, \gamma\in \{0.001, 0.1\}$                            |
-| Distortion                    | Triangular   | $c \in \{0.3, 1\}$                                           |
-| Aspect ratio                  | Varying      | $\{1{:}1~(9\%), 5{:}4~(1\%), 4{:}3~(66\%), 3{:}2~(20\%), 16{:}9~(4\%)\}$ |
-| Orientation                   | Varying      | $\{\rm{portrait}~(20\%), \rm{landscape}~(80\%)\}$            |
+| Focal lenght (mm)             | Lognormal    | <img src="https://render.githubusercontent.com/render/math?math=\mu=14, \sigma=16">|
+| Pitch, midpoint (image units) | Normal       | <img src="https://render.githubusercontent.com/render/math?math=\mu=0.523, \sigma=0.3">|
+| Roll (°)                      | Cauchy       | <img src="https://render.githubusercontent.com/render/math?math=x_0=0, \gamma\in \{0.001, 0.1\}">|
+| Distortion                    | Triangular   | <img src="https://render.githubusercontent.com/render/math?math=c \in \{0.3, 1\}">
+| Aspect ratio                  | Varying      | {1:1(9\%), 5:4(1\%), 4:3(66\%), 3:2 (20\%), 16:9 (4\%)}
+| Orientation                   | Varying      | {portrait (20%), landscape (80%)}
 
