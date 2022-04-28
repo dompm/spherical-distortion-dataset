@@ -14,13 +14,13 @@ To generate crops with randomly sampled camera parameters, run:
 python main.py --pano_dir=<PANOS_ROOT> --output_dir=<OUTPUT_DIR>
 ```
 
-In our paper, we use the purchasable panorama dataset [360Cities](https://www.360cities.net/) to generate crops. If you have access to the panoramas, you can generate our dataset by running
+In our paper, we use the purchasable panorama dataset [360Cities](https://www.360cities.net/) to generate crops. If you have access to the panoramas, you can generate our dataset by downloading the [crops metadata](https://drive.google.com/file/d/1Wy_3KdZuqzd6ZCARpZTa3k10BT7lSLOG/view?usp=sharing) and running
 
 ```
 python main.py --pano_dir=<360CITIES_ROOT> --output_dir=<OUTPUT_DIR> --metadata_dir=360cities_metadata
 ```
 
-Otherwise, we provide an open source version of the dataset based on [PolyHaven](https://polyhaven.com/hdris). The dataset can be downloaded [here](https://drive.google.com/drive/folders/1nMxqZjNlmNKm4Nzz1pYPBwgGCK-_49vx?usp=sharing). To regenerate the crops from the (tonemapped) panoramas, use:
+Otherwise, we provide an open source version of the dataset based on [PolyHaven](https://polyhaven.com/hdris). The dataset can be downloaded [here](https://drive.google.com/file/d/1qR5kUBLlbjzREEHfSqTGzEOUO4z64rsP/view?usp=sharing). To regenerate the crops from the (tonemapped) panoramas, download the [crops metadata](https://drive.google.com/file/d/1v7johUDARrr4bAChHd-MuAavqKGpI9Vq/view?usp=sharing) and run:
 
 ```
 python main.py --pano_dir=<POLYHAVEN_ROOT> --output_dir=<OUTPUT_DIR> --metadata_dir=polyhaven_metadata
