@@ -1,12 +1,13 @@
 # A Deep Perceptual Measure for Lens and Camera Calibration
 
-This repository contains the code to generate the dataset from our paper:
+This repository contains the code to generate the dataset and the perceptual measure from our paper:
 
 > **A Deep Perceptual Measure for Lens and Camera Calibration**  
 > Yannick Hold-Geoffroy¹ , Dominique Piché-Meunier³ , Kalyan Sunkavalli¹ , Jean-Charles Bazin², François Rameau², and Jean-François Lalonde³  
 > Adobe¹ , KAIST² , Université Laval²
 
-## Usage
+## Dataset
+### Usage
 
 To generate crops with randomly sampled camera parameters, run:
 
@@ -26,9 +27,9 @@ Otherwise, we provide an open source version of the dataset based on [PolyHaven]
 python main.py --pano_dir=<POLYHAVEN_ROOT> --output_dir=<OUTPUT_DIR> --metadata_dir=polyhaven_metadata
 ```
 
-## Examples
+### Examples
 
-Here are some samples from the [PolyHaven dataset](https://drive.google.com/drive/folders/1nMxqZjNlmNKm4Nzz1pYPBwgGCK-_49vx?usp=sharing).
+Here are some samples from the [PolyHaven dataset](https://drive.google.com/file/d/1qR5kUBLlbjzREEHfSqTGzEOUO4z64rsP/view?usp=sharing).
 
 | ![adams_place_bridge-0](https://i.imgur.com/5gZnX6W.jpg) | ![aviation_museum-1](https://i.imgur.com/Gy74ILo.jpg) | ![arboretum-1](https://i.imgur.com/PJJ3s8k.jpg)      | ![aristea_wreck-0](https://i.imgur.com/d0cNr7t.jpg)     |
 | -------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------- |
@@ -37,9 +38,7 @@ Here are some samples from the [PolyHaven dataset](https://drive.google.com/driv
 | ![cambridge-2](https://i.imgur.com/CP58iQl.jpg)          | ![canary_wharf-3](https://i.imgur.com/dHXd2ru.jpg)    | ![cayley_lookout-0](https://i.imgur.com/zKsOplZ.jpg) | ![colosseum-2](https://i.imgur.com/3pkF2Og.jpg)         |
 | ![chinese_garden-6](https://i.imgur.com/MAjTpL0.jpg)     | ![ahornsteig-6](https://i.imgur.com/Yn0RuMR.jpg)      | ![autumn_road-0](https://i.imgur.com/rmbU5mf.jpg)    | ![country_club-2](https://i.imgur.com/7NmoiZi.jpg)      |
 
-
-
-## Parameters sampling
+### Parameters sampling
 
 Random camera parameters are sampled with the following distributions:
 
@@ -52,3 +51,26 @@ Random camera parameters are sampled with the following distributions:
 | Aspect ratio                  | Varying      | {1:1(9\%), 5:4(1\%), 4:3(66\%), 3:2 (20\%), 16:9 (4\%)}
 | Orientation                   | Varying      | {portrait (20%), landscape (80%)}
 
+## Perceptual measure
+In our paper, we conduct a large-scale study where we ask participants to judge the realism of 3D objects composited with correct and biased camera calibration parameters. From the results of this study, we define a perceptual measure that quantifies how sensitive humans are to errors in camera parameters. The perceptual measure goes from 50% (low sensitivity, humans do not notice the error) to 100% (high sensitivity, the error is easily noticeable).
+
+### Usage
+```
+from perceptual_measure import pitch_perceptual_measure, roll_perceptual_measure, hfov_perceptual_measure, distortion_perceptual_measure
+```
+
+For example, on an image with a ground truth roll of 15° and an estimated roll of 10° (error of 15-10=5°), the perceptual measure would be
+
+```
+roll_perceptual_measure(value=15, error=5)
+> 62.34
+```
+
+On the same image, for increasing roll errors, we get:
+
+```
+roll_perceptual_measure([15, 15, 15, 15, 15, 15], [0, 5, 10, 15, 20, 25])
+> [50.0, 62.34, 74.68, 87.15, 99.19, nan]
+```
+
+nan means that the parameter value or error is outside of the ranges used in our study.
