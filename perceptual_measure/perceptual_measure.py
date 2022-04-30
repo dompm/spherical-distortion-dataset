@@ -53,7 +53,7 @@ def roll_perceptual_measure(value, error):
 
 def hfov_perceptual_measure(value, error):
     """
-    Perceptual measure for horizon effective field of view in degrees
+    Perceptual measure for the horizontal effective field of view in degrees
 
     value: ground truth hfov
     error: error on the estimated hfov (ground truth - estimated)
@@ -62,7 +62,7 @@ def hfov_perceptual_measure(value, error):
 
 def distortion_perceptual_measure(value, error):
     """
-    Perceptual measure for the distortion (xi) as used in the spherical model
+    Perceptual measure for the distortion (xi) as defined in the spherical model
 
     value: ground truth distortion
     error: error on the estimated distortion (ground truth - estimated)
